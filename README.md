@@ -2,10 +2,16 @@ Use this service to easily visit long, complicated URLs.
 
 ## Setup
 ### Server setup
+Recommended to use Heroku to host the service if you don't care about security. Should take about 5 minutes to stand up. Otherwise you can put it on a Kubernetes cluster.
 1. Create a Firebase project
-1. Export Firebase creds, create a secret in the format expected by `kube/api-deployment.yaml` or make them available as environment variables in your deployment environment
-1. Deploy on Kubernetes using the files in `kube/` or the platform of your choice
-1. Set up domain if you don't get one for free through your deployment platform
+1. Export Firebase creds on your [Firebase service account](https://console.developers.google.com/iam-admin/serviceaccounts/) as a json file
+1. Create a new Heroku app and connect it to this git repo or your fork of it
+1. Make json file's creds available as environment variables in your deployment environment (eg. through Heroku dashboard)
+    * `FIREBASE_PROJECT_ID`
+    * `FIREBASE_CLIENT_EMAIL`
+    * `FIREBASE_DATABASE_NAME`
+    * `FIREBASE_PRIVATE_KEY` which can have literal `\n` instead of actual newlines
+1. Deploy!
 
 ### Client setup
 Add this site to your <a href="chrome://settings/searchEngines">Chrome search engines</a> by scrolling down until you see three empty boxes. Enter values <b>go</b>, <b>go</b>, and <b>go.corp.mycompany.com/%s</b>, respectively.
