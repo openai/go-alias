@@ -6,6 +6,10 @@
     "start": "node ./bin/www",
     "dev": "DEBUG=gonode:* devtool bin/www -w"
   },
+  "engines": {
+    "node": "6.6.0",
+    "npm": "3.10.3"
+  },
   "dependencies": {
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
