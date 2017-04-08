@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Welcome to the go service!
+  p Use this service to easily visit long, complicated URLs.
+  h2 Setup
+  p.
+    Add this site to your <a href="chrome://settings/searchEngines">Chrome search engines</a> by scrolling down until you see three empty boxes. Enter values <b>go</b>, <b>go</b>, and <b>#{path}/%s</b>, respectively.
+  h2 Use
+  p.
+    When you type in the Chrome URL bar
+    <b>go&lt;TAB&gt;</b>
+    anything you type afterwards will bring you to that alias here.
+    You can then paste your link in the box and the next time you visit this alias, it will bring you straight to the site you pasted before.
+  p You can override any alias by visiting eg., #{path}/myalias/mynewsite.com
+  h2 Feedback
+  p This project is open source! Check out the&nbsp;
+    a(href="https://github.com/openai/gonode") Github

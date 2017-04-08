@@ -1,0 +1,52 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gonode
+  namespace: system
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: gonode
+    spec:
+      containers:
+      - name: app
+        image: quay.io/openai/gonode
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: AWS_DEFAULT_REGION
+          value: "us-west-2"
+        - name: FIREBASE_PROJECT_ID
+          valueFrom:
+            secretKeyRef:
+              name: firebase
+              key: project-id
+        - name: FIREBASE_DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              name: firebase
+              key: database-name
+        - name: FIREBASE_CLIENT_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: firebase
+              key: client-email
+        - name: FIREBASE_PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: firebase
+              key: private-key
+        readinessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 3000
+          initialDelaySeconds: 3
+          timeoutSeconds: 1
+      restartPolicy: Always
+      imagePullSecrets:
+      - name: quay-login-secret
+      nodeSelector:
+        aws/region: us-west-2

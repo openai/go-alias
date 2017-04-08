@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  a(href='/' + title)
+    h1= title
+  if (url)
+    p Will now redirect to #{url}
+  else
+    p No URL set. Enter one:
+    input#url.form-control(type='text', placeholder='url' name='url')
+    button.btn.btn-primary(
+      type='button',
+      onclick='go()') Submit
+
+  script.
+    title='#{title}'
+    function go() {
+      window.location.href = `${title}/${document.getElementById("url").value}`
+    }
+    input = document.getElementById('url')
+    if (input) {
+      input.addEventListener('keypress', function (e) {
+        var key = e.which || e.keyCode;
+        if (key === 13) { // enter
+          go()
+        }
+      });
+    }
