@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('gonode:server');
+var debug = require('debug')('go-alias:server');
 var http = require('http');
 
 /**
