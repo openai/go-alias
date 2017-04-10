@@ -1,4 +1,4 @@
-Use this service to easily visit long, complicated URLs.
+Use this service to quickly alias and redirect to long URLs [(demo)](https://gonode-demo.herokuapp.com)
 
 ## Setup
 ### Server setup
