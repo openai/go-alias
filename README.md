@@ -1,3 +1,5 @@
+**Status:** Archive (code is provided as-is, no updates expected)
+
 Use this service to quickly alias and redirect to long URLs [(demo)](https://gonode-demo.herokuapp.com)
 
 ## Setup
